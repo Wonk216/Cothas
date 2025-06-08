@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cothas Coffee: Brewing a Future with the Current Generation - Presented by Kreate Communications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 320px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 400px;
+            }
+        }
+        .stat-card-accent {
+            border-left: 5px solid #F99100;
+        }
+        .flow-arrow::after {
+            content: '▼';
+            position: absolute;
+            bottom: -28px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 24px;
+            color: #0582CA;
+        }
+        .swot-grid {
+            grid-template-areas:
+                "strengths weaknesses"
+                "opportunities threats";
+        }
+        .swot-strengths { grid-area: strengths; }
+        .swot-weaknesses { grid-area: weaknesses; }
+        .swot-opportunities { grid-area: opportunities; }
+        .swot-threats { grid-area: threats; }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+
+    <main class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#006494] mb-2">Cothas Coffee</h1>
+            <p class="text-xl md:text-2xl font-semibold text-[#0582CA]">Brewing a Future with the Current Generation</p>
+            <p class="max-w-3xl mx-auto mt-4 text-gray-600">
+                An infographic visualizing the market landscape, competitive dynamics, and strategic opportunities for a 75-year-old legacy brand navigating the tastes of Millennials and Gen Z.
+            </p>
+        </header>
+
+        <section id="market-overview" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#006494]">The Booming Indian Coffee Market</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4 text-[#006494]">Projected Market Surge</h3>
+                    <p class="text-gray-600 mb-4 flex-grow">The Indian coffee market is on a steep upward trajectory, poised for significant expansion. This growth signals a major shift in beverage preferences nationwide, creating a fertile ground for established and new brands alike.</p>
+                    <div class="chart-container">
+                        <canvas id="marketGrowthChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6 flex flex-col">
+                    <h3 class="text-xl font-bold mb-4 text-[#006494]">The Specialty Coffee Wave</h3>
+                     <p class="text-gray-600 mb-4 flex-grow">While the overall market is growing, the specialty coffee segment is expanding at a much faster rate. This indicates a clear consumer shift towards higher quality, unique flavors, and premium coffee experiences, driven largely by younger, more discerning drinkers.</p>
+                    <div class="chart-container">
+                        <canvas id="segmentGrowthChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="consumer-insights" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#006494]">Meet the New Coffee Consumer: Millennial & Gen Z Drivers</h2>
+             <p class="text-lg text-center max-w-3xl mx-auto mb-8 text-gray-600">The "current generation" is not a monolith. Their coffee consumption is diverse, spanning convenience, craft, and cold brews. Understanding their core values—experience, authenticity, and sustainability—is key to capturing their loyalty.</p>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-[#0582CA] mb-2">Experience is Everything</h3>
+                    <p class="text-6xl mb-2">☕</p>
+                    <p class="text-gray-600">Cafes are the new social and professional hubs. The ambiance, design, and overall vibe are as important as the coffee itself for this generation.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                     <h3 class="text-xl font-bold text-[#0582CA] mb-2">"Instagrammable" Moments</h3>
+                    <div class="chart-container h-48">
+                         <canvas id="instagramChart"></canvas>
+                    </div>
+                    <p class="text-gray-600 mt-4">Visual appeal is a primary decision-driver. Over 60% of Gen Z consumers consider a coffee shop's aesthetic when choosing where to go.</p>
+                </div>
+
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold text-[#0582CA] mb-2">Conscious Consumption</h3>
+                    <p class="text-6xl mb-2">🌿</p>
+                    <p class="text-gray-600">Younger consumers demand transparency. Ethically sourced, sustainable, and eco-friendly products are no longer a bonus, but an expectation.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="competitive-landscape" class="mb-16">
+             <h2 class="text-3xl font-bold text-center mb-8 text-[#006494]">The Competitive Brew</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-[#006494]">Market Positioning Snapshot (Tracxn Score)</h3>
+                    <p class="text-gray-600 mb-4">In a crowded field, perceived market strength and innovation are critical. Cothas currently lags behind digitally-native and modern café competitors, highlighting a significant opportunity for digital and brand transformation.</p>
+                    <div class="chart-container">
+                         <canvas id="competitorChart"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6">
+                    <h3 class="text-xl font-bold mb-4 text-[#006494]">Navigating the Four Fronts of Competition</h3>
+                    <p class="text-gray-600 mb-6">Cothas must contend with a diverse set of rivals, each with distinct strengths. The challenge is to differentiate itself across all segments, from its traditional home ground to the fast-paced D2C and specialty café arenas.</p>
+                     <div class="space-y-4">
+                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                            <h4 class="font-bold text-[#006494]">Traditional Players</h4>
+                            <p class="text-sm text-gray-700">Legacy brands like Narasu's and Leo Coffee compete on heritage and established taste profiles in the South Indian market.</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
+                            <h4 class="font-bold text-[#F75C03]">Modern Cafes & Chains</h4>
+                            <p class="text-sm text-gray-700">Players like Blue Tokai and Third Wave Coffee Roasters dominate on experience, specialty offerings, and rapid expansion.</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-blue-50 border border-blue-200">
+                             <h4 class="font-bold text-[#006494]">D2C Disruptors</h4>
+                            <p class="text-sm text-gray-700">Agile brands like Sleepy Owl capture youth attention with innovative convenience products and savvy digital marketing.</p>
+                        </div>
+                        <div class="p-4 rounded-lg bg-orange-50 border border-orange-200">
+                             <h4 class="font-bold text-[#F75C03]">FMCG Giants</h4>
+                             <p class="text-sm text-gray-700">Household names like Nescafé and BRU command the instant coffee market with vast distribution and brand recognition.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="swot" class="mb-16">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#006494]">Cothas at the Crossroads: A SWOT Analysis</h2>
+            <p class="text-lg text-center max-w-3xl mx-auto mb-8 text-gray-600">Cothas's path forward requires leveraging its formidable strengths to seize clear opportunities while strategically mitigating its weaknesses and navigating external threats.</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
+                    <h3 class="text-xl font-bold text-green-800 mb-3">Strengths</h3>
+                    <ul class="list-disc list-inside space-y-2 text-green-700">
+                        <li>75+ year authentic heritage</li>
+                        <li>Reputation for consistent quality & taste</li>
+                        <li>Deeply loyal customer base</li>
+                        <li>Advanced manufacturing & quality certifications</li>
+                         <li>Rainforest Alliance Certified</li>
+                    </ul>
+                </div>
+
+                <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                    <h3 class="text-xl font-bold text-red-800 mb-3">Weaknesses</h3>
+                    <ul class="list-disc list-inside space-y-2 text-red-700">
+                        <li>Traditional brand perception for youth</li>
+                        <li>Underdeveloped digital & social media presence</li>
+                        <li>Retail experience may feel outdated</li>
+                        <li>Recent concerns over taste consistency</li>
+                    </ul>
+                </div>
+
+                <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg">
+                    <h3 class="text-xl font-bold text-blue-800 mb-3">Opportunities</h3>
+                    <ul class="list-disc list-inside space-y-2 text-blue-700">
+                        <li>Tap into booming specialty & cold coffee markets</li>
+                        <li>Leverage sustainability story to attract Gen Z</li>
+                        <li>Create modern, experiential cafes</li>
+                        <li>Expand D2C channel with subscriptions</li>
+                    </ul>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg">
+                    <h3 class="text-xl font-bold text-yellow-800 mb-3">Threats</h3>
+                    <ul class="list-disc list-inside space-y-2 text-yellow-700">
+                        <li>Intense competition from agile D2C brands</li>
+                        <li>Shifting consumer preferences to experience</li>
+                        <li>Price sensitivity in mass-market segments</li>
+                        <li>Funded competitors can invest more aggressively</li>
+                    </ul>
+                </div>
+
+            </div>
+        </section>
+
+
+        <section id="strategy" class="mb-16">
+             <h2 class="text-3xl font-bold text-center mb-8 text-[#006494]">Brewing the Future: Strategic Pathways to Relevance</h2>
+             <p class="text-lg text-center max-w-3xl mx-auto mb-8 text-gray-600">To bridge the gap between its rich heritage and the expectations of a new generation, Cothas must pursue a multi-pronged strategy focused on innovation, experience, and authentic communication.</p>
+            <div class="relative flex flex-col items-center space-y-12">
+                
+                <div class="w-full md:w-3/4 lg:w-1/2 bg-white rounded-xl shadow-lg p-6 text-center relative flow-arrow">
+                     <h3 class="text-xl font-bold text-[#F75C03]">1. Product Innovation</h3>
+                     <p class="text-gray-600">Expand into high-demand categories: RTD Cold Brew, premium/functional Instant Coffee, and a dedicated line of traceable, single-origin Specialty Beans.</p>
+                </div>
+                
+                <div class="w-full md:w-3/4 lg:w-1/2 bg-white rounded-xl shadow-lg p-6 text-center relative flow-arrow">
+                    <h3 class="text-xl font-bold text-[#F75C03]">2. Digital Transformation</h3>
+                    <p class="text-gray-600">Revamp e-commerce, launch an aggressive social media strategy focused on storytelling, and build a D2C community with subscriptions and engagement.</p>
+                </div>
+
+                <div class="w-full md:w-3/4 lg:w-1/2 bg-white rounded-xl shadow-lg p-6 text-center relative flow-arrow">
+                     <h3 class="text-xl font-bold text-[#F75C03]">3. Experiential Retail</h3>
+                    <p class="text-gray-600">Design modern, "Instagrammable" cafes that serve as community hubs. Incorporate tasting bars and workshops to immerse customers in the Cothas craft.</p>
+                </div>
+
+                <div class="w-full md:w-3/4 lg:w-1/2 bg-white rounded-xl shadow-lg p-6 text-center">
+                    <h3 class="text-xl font-bold text-[#F75C03]">4. Authentic Storytelling</h3>
+                    <p class="text-gray-600">Shift the narrative. Weave the 75-year legacy with a powerful, transparent story about sustainability (Rainforest Alliance), ethical sourcing, and the journey of Karnataka's finest beans.</p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="cothas-stats" class="mb-8">
+            <h2 class="text-3xl font-bold text-center mb-8 text-[#006494]">Cothas by the Numbers: Foundation for Growth</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="bg-white rounded-xl shadow-lg p-6 stat-card-accent">
+                    <p class="text-5xl font-black text-[#006494]">75+</p>
+                    <p class="text-xl font-semibold text-gray-700">Years of Heritage</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 stat-card-accent">
+                    <p class="text-5xl font-black text-[#006494]">₹1000<span class="text-3xl">cr</span></p>
+                    <p class="text-xl font-semibold text-gray-700">Ambitious Revenue Target</p>
+                </div>
+                <div class="bg-white rounded-xl shadow-lg p-6 stat-card-accent">
+                    <p class="text-5xl font-black text-[#006494]">300+</p>
+                    <p class="text-xl font-semibold text-gray-700">Tonnes Roasted Monthly</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 bg-gray-800 text-white">
+        <p>Infographic based on the Deep Research report on Cothas Coffee.</p>
+        <p class="text-sm text-gray-400 mt-2">Visualization created using Chart.js and Tailwind CSS. No SVG or Mermaid JS used.</p>
+        <p class="text-sm text-gray-400 mt-1">Chosen Color Palette: Energetic & Playful.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            const energeticPlayfulPalette = {
+                blue: '#00A6FB',
+                darkerBlue: '#0582CA',
+                deepBlue: '#006494',
+                orange: '#F99100',
+                darkerOrange: '#F75C03',
+                gray: 'rgba(107, 114, 128, 0.5)'
+            };
+
+            const globalChartOptions = {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        labels: {
+                            color: '#1f2937',
+                            font: {
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    tooltip: {
+                        callbacks: {
+                            title: function(tooltipItems) {
+                                const item = tooltipItems[0];
+                                let label = item.chart.data.labels[item.dataIndex];
+                                if (Array.isArray(label)) {
+                                  return label.join(' ');
+                                } else {
+                                  return label;
+                                }
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        ticks: {
+                            color: '#4b5563',
+                            font: {
+                                family: "'Inter', sans-serif"
+                            }
+                        },
+                        grid: {
+                            color: 'rgba(209, 213, 219, 0.5)'
+                        }
+                    },
+                    x: {
+                        ticks: {
+                            color: '#4b5563',
+                             font: {
+                                family: "'Inter', sans-serif"
+                            }
+                        },
+                        grid: {
+                            display: false
+                        }
+                    }
+                }
+            };
+            
+            function wrapLabel(str, maxWidth) {
+                if (str.length <= maxWidth) {
+                    return str;
+                }
+                const words = str.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxWidth && currentLine.length > 0) {
+                        lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                if (currentLine.length > 0) {
+                    lines.push(currentLine);
+                }
+                return lines;
+            }
+
+
+            function renderMarketGrowthChart() {
+                const ctx = document.getElementById('marketGrowthChart')?.getContext('2d');
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: ['2022', '2024', '2028', '2032'],
+                        datasets: [{
+                            label: 'Market Value (USD Million)',
+                            data: [478, 579, 878, 1227],
+                            borderColor: energeticPlayfulPalette.orange,
+                            backgroundColor: 'rgba(249, 145, 0, 0.2)',
+                            fill: true,
+                            tension: 0.4
+                        }]
+                    },
+                    options: { ...globalChartOptions }
+                });
+            }
+
+            function renderSegmentGrowthChart() {
+                const ctx = document.getElementById('segmentGrowthChart')?.getContext('2d');
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: [wrapLabel('Specialty Coffee', 16), wrapLabel('Overall Market', 16), wrapLabel('Instant Coffee', 16)],
+                        datasets: [{
+                            label: 'Compound Annual Growth Rate (CAGR %)',
+                            data: [13.6, 9.87, 6.5],
+                             backgroundColor: [energeticPlayfulPalette.orange, energeticPlayfulPalette.blue, energeticPlayfulPalette.darkerBlue],
+                            borderColor: [energeticPlayfulPalette.orange, energeticPlayfulPalette.blue, energeticPlayfulPalette.darkerBlue],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: { 
+                        ...globalChartOptions,
+                        plugins: {
+                            ...globalChartOptions.plugins,
+                            legend: { display: false }
+                        }
+                    }
+                });
+            }
+            
+            function renderInstagramChart() {
+                const ctx = document.getElementById('instagramChart')?.getContext('2d');
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Consider Aesthetic Appeal', 'Other Factors'],
+                        datasets: [{
+                            label: 'Gen Z Cafe Choice',
+                            data: [60, 40],
+                            backgroundColor: [energeticPlayfulPalette.orange, energeticPlayfulPalette.gray],
+                            borderColor: ['#ffffff'],
+                            borderWidth: 4,
+                            hoverOffset: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                         plugins: {
+                            legend: {
+                                position: 'bottom',
+                                labels: {
+                                    color: '#1f2937',
+                                    font: {
+                                        family: "'Inter', sans-serif"
+                                    }
+                                }
+                            },
+                             tooltip: globalChartOptions.plugins.tooltip
+                        }
+                    }
+                });
+            }
+            
+            function renderCompetitorChart() {
+                const ctx = document.getElementById('competitorChart')?.getContext('2d');
+                if (!ctx) return;
+                new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['Cafe Coffee Day', 'Blue Tokai Roasters', 'Cothas Coffee'],
+                        datasets: [{
+                            label: 'Tracxn Score (out of 100)',
+                            data: [76, 75, 18],
+                            backgroundColor: [energeticPlayfulPalette.darkerBlue, energeticPlayfulPalette.blue, energeticPlayfulPalette.orange],
+                            borderColor: [energeticPlayfulPalette.darkerBlue, energeticPlayfulPalette.blue, energeticPlayfulPalette.orange],
+                            borderWidth: 1
+                        }]
+                    },
+                    options: {
+                        ...globalChartOptions,
+                        indexAxis: 'y',
+                         plugins: {
+                            ...globalChartOptions.plugins,
+                            legend: { display: false }
+                        },
+                        scales: {
+                           x: {
+                               ticks: {
+                                   color: '#4b5563'
+                               },
+                               grid: {
+                                   color: 'rgba(209, 213, 219, 0.5)'
+                               }
+                           },
+                           y: {
+                               ticks: {
+                                   color: '#4b5563'
+                               },
+                               grid: {
+                                   display: false
+                               }
+                           }
+                       }
+                    }
+                });
+            }
+
+            renderMarketGrowthChart();
+            renderSegmentGrowthChart();
+            renderInstagramChart();
+            renderCompetitorChart();
+        });
+    </script>
+
+</body>
+</html>
